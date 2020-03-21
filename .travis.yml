@@ -13,16 +13,16 @@ install:
 - conda config --set always_yes yes --set changeps1 no
 - conda update -q conda
 - conda config --add channels http://conda.binstar.org/omnia
-- bash scripts/install_deepchem_conda.sh deepchem
-- source activate deepchem
+- bash scripts/install_deepdock_conda.sh deepdock
+- source activate deepdock
 - pip install yapf==0.22.0
 - pip install coveralls
 - python setup.py install
 script:
-- nosetests -q --with-flaky -a '!slow' --with-coverage --cover-package=deepchem
-  -v deepchem --nologcapture
+- nosetests -q --with-flaky -a '!slow' --with-coverage --cover-package=deepdock
+  -v deepdock --nologcapture
 - if [ $TRAVIS_PYTHON_VERSION == '3.7' ]; then
-      find ./deepchem | grep .py$ |xargs python -m doctest -v;
+      find ./deepdock | grep .py$ |xargs python -m doctest -v;
   fi
 - bash devtools/travis-ci/test_format_code.sh
 after_success:
