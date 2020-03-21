@@ -1,7 +1,6 @@
 """
 Generates protein-ligand docked poses using Autodock Vina.
 """
-from deepchem.utils import mol_xyz_util
 
 __author__ = "Bharath Ramsundar"
 __copyright__ = "Copyright 2016, Stanford University"
@@ -12,8 +11,9 @@ import numpy as np
 import os
 import tempfile
 from subprocess import call
-from deepchem.feat import hydrogenate_and_compute_partial_charges
-from deepchem.dock.binding_pocket import RFConvexHullPocketFinder
+from moleculenet.featurizers import hydrogenate_and_compute_partial_charges
+from deepdock.binding_pocket import RFConvexHullPocketFinder
+from deepchem.utils import mol_xyz_util
 from deepchem.utils import rdkit_util
 
 logger = logging.getLogger(__name__)

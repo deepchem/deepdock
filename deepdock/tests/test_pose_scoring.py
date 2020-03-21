@@ -15,8 +15,9 @@ import numpy as np
 import deepchem as dc
 from sklearn.ensemble import RandomForestRegressor
 from subprocess import call
-from deepchem.utils import download_url
-from deepchem.utils import get_data_dir
+import moleculenet
+from moleculenet.utils import download_url
+from moleculenet.utils import get_data_dir
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +33,7 @@ class TestPoseScoring(unittest.TestCase):
         "http://deepchem.io.s3-website-us-west-1.amazonaws.com/featurized_datasets/core_grid.json"
     )
     json_fname = os.path.join(get_data_dir(), 'core_grid.json')
-    self.core_dataset = dc.data.NumpyDataset.from_json(json_fname)
+    self.core_dataset = moleculenet.data.NumpyDataset.from_json(json_fname)
 
   def test_pose_scorer_init(self):
     """Tests that pose-score works."""
@@ -41,7 +42,7 @@ class TestPoseScoring(unittest.TestCase):
     logger.info("About to fit model on core set")
     model.fit(self.core_dataset)
 
-    pose_scorer = dc.dock.GridPoseScorer(model, feat="grid")
+    pose_scorer = deepdock.GridPoseScorer(model, feat="grid")
 
   def test_pose_scorer_score(self):
     """Tests that scores are generated"""
@@ -54,6 +55,6 @@ class TestPoseScoring(unittest.TestCase):
     logger.info("About to fit model on core set")
     model.fit(self.core_dataset)
 
-    pose_scorer = dc.dock.GridPoseScorer(model, feat="grid")
+    pose_scorer = deepdock.GridPoseScorer(model, feat="grid")
     score = pose_scorer.score(protein_file, ligand_file)
     assert score.shape == (1,)

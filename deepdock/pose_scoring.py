@@ -1,17 +1,12 @@
 """
 Scores protein-ligand poses using DeepChem.
 """
-from deepchem.feat import RdkitGridFeaturizer
-
-__author__ = "Bharath Ramsundar"
-__copyright__ = "Copyright 2016, Stanford University"
-__license__ = "MIT"
-
 import numpy as np
 import os
 import tempfile
-from deepchem.data import NumpyDataset
 from subprocess import call
+from moleculenet.data import NumpyDataset
+from moleculenet.featurizers import RdkitGridFeaturizer
 
 
 class PoseScorer(object):

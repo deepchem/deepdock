@@ -11,8 +11,8 @@ import tempfile
 import numpy as np
 from subprocess import call
 from scipy.spatial import ConvexHull
-from deepchem.feat.binding_pocket_features import BindingPocketFeaturizer
-from deepchem.feat.fingerprints import CircularFingerprint
+from moleculenet.featurizers.binding_pocket_features import BindingPocketFeaturizer
+from moleculenet.featurizers.fingerprints import CircularFingerprint
 from deepchem.models.sklearn_models import SklearnModel
 from deepchem.utils import rdkit_util
 

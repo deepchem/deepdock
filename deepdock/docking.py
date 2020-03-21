@@ -9,13 +9,13 @@ import logging
 import numpy as np
 import os
 import tempfile
-from deepchem.data import DiskDataset
-from deepchem.models import SklearnModel
-from deepchem.models import MultitaskRegressor
-from deepchem.dock.pose_scoring import GridPoseScorer
-from deepchem.dock.pose_generation import VinaPoseGenerator
 from sklearn.ensemble import RandomForestRegressor
 from subprocess import call
+from moleculenet.data import DiskDataset
+from deepchem.models import SklearnModel
+from deepchem.models import MultitaskRegressor
+from deepdock.pose_scoring import GridPoseScorer
+from deepdock.pose_generation import VinaPoseGenerator
 
 logger = logging.getLogger(__name__)
 
